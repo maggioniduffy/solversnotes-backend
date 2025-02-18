@@ -12,7 +12,7 @@ export class NotesController {
   async createNote(@Body() createNoteDto: CreateNoteDto) {
     this.logger.verbose("Creating note ", JSON.stringify(createNoteDto));
     const note = await this.notesService.createNote(createNoteDto);
-    this.logger.debug("Note from service ", JSON.stringify(createNoteDto));
+    this.logger.debug("Note from service... ", JSON.stringify(createNoteDto));
 
     return note.toJSON();
   }
