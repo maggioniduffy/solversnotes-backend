@@ -17,5 +17,5 @@ export class FilterNotesDto {
 
   @IsOptional()
   @IsEnum(NoteTags)
-  tag?: NoteTags;
+  category?: NoteTags;
 }

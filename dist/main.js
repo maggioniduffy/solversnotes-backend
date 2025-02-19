@@ -7,6 +7,11 @@ async function bootstrap() {
     const logger = new common_1.Logger();
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     const port = process.env.PORT;
+    app.enableCors({
+        origin: "*",
+        methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+        credentials: true,
+    });
     await app.listen(port ?? 5000);
     logger.log(`Application running on port ${port}`);
 }

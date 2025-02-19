@@ -9,35 +9,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.FilterNotesDto = void 0;
+exports.EditNoteDto = void 0;
 const class_validator_1 = require("class-validator");
 const note_status_enum_1 = require("../models/note-status.enum");
 const note_tags_enum_1 = require("../models/note-tags.enum");
-class FilterNotesDto {
-    authorId;
+class EditNoteDto {
     title;
+    description;
     status;
-    category;
+    tag;
 }
-exports.FilterNotesDto = FilterNotesDto;
+exports.EditNoteDto = EditNoteDto;
 __decorate([
+    (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], FilterNotesDto.prototype, "authorId", void 0);
+], EditNoteDto.prototype, "title", void 0);
 __decorate([
-    (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
-], FilterNotesDto.prototype, "title", void 0);
+], EditNoteDto.prototype, "description", void 0);
 __decorate([
-    (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsEnum)(note_status_enum_1.NoteStatus),
+    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
-], FilterNotesDto.prototype, "status", void 0);
+], EditNoteDto.prototype, "status", void 0);
 __decorate([
-    (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsEnum)(note_tags_enum_1.NoteTags),
+    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
-], FilterNotesDto.prototype, "category", void 0);
-//# sourceMappingURL=filter-notes.dto.js.map
+], EditNoteDto.prototype, "tag", void 0);
+//# sourceMappingURL=edit-note.dto.js.map

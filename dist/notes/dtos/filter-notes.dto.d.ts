@@ -4,5 +4,5 @@ export declare class FilterNotesDto {
     authorId: string;
     title?: string;
     status?: NoteStatus;
-    tag?: NoteTags;
+    category?: NoteTags;
 }

@@ -31,19 +31,35 @@ let NotesService = class NotesService {
         return savednote;
     }
     async findNotesByUser(filterDto) {
-        const { title, authorId, tag, status } = filterDto;
+        const { title, authorId, category, status } = filterDto;
         const search = { authorId };
         if (title) {
             search.title = { $regex: title, $options: "i" };
         }
-        if (tag) {
-            search.tag = tag;
+        if (category) {
+            search.category = category;
         }
         if (status) {
             search.status = status;
         }
         const notes = await this.noteModel.find(search).exec();
         return notes;
+    }
+    async getNoteById(id) {
+        return await this.noteModel.findById(id).exec();
+    }
+    async deleteNoteById(id) {
+        return await this.noteModel.findByIdAndDelete(id).exec();
+    }
+    async editNote(id, editDto) {
+        const updatedNote = await this.noteModel.findByIdAndUpdate(id, editDto, {
+            new: true,
+            runValidators: true,
+        });
+        if (!updatedNote) {
+            throw new common_1.NotFoundException(`Note with ID ${id} not found`);
+        }
+        return updatedNote;
     }
 };
 exports.NotesService = NotesService;
