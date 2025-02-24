@@ -7,8 +7,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const port = process.env.PORT;
   app.enableCors({
-    origin: "*", // Allow frontend origin
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    origin: "https://solversnotes.vercel.app", // Allow only your frontend origin
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
     credentials: true, // Allow cookies if needed
   });
   await app.listen(port ?? 5000);
