@@ -9,7 +9,7 @@ async function bootstrap() {
   app.enableCors({
     origin: ["https://solversnotes.vercel.app", "http://localhost:3000"], // Allow frontend origin
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true, // Allow cookies if needed
+    // Allow cookies if needed
   });
   await app.listen(port ?? 5000);
 
