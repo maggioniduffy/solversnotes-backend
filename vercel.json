@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "ignoreBuildStep": true,
   "builds": [
     {
       "src": "dist/main.js",
