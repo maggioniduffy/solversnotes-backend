@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Logger, Param, Post, Query, Delete, Options, Res, Req } from "@nestjs/common";
+import { Body, Controller, Get, Logger, Param, Post, Query, Delete } from "@nestjs/common";
 import { CreateNoteDto } from "../dtos/create-note.dto";
 import { NotesService } from "../services/notes/notes.service";
 import { FilterNotesDto } from "../dtos/filter-notes.dto";
@@ -9,15 +9,6 @@ import { EditNoteDto } from "../dtos/edit-note.dto";
 export class NotesController {
   private logger = new Logger("NotesController");
   constructor(private readonly notesService: NotesService) {}
-
-  @Options()
-  handleOptions(@Req() req, @Res() res) {
-    res.header("Access-Control-Allow-Origin", "https://solversnotes.vercel.app");
-    res.header("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS");
-    res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
-    res.header("Access-Control-Allow-Credentials", "true");
-    return res.status(204).send();
-  }
 
   @Post("/")
   async createNote(@Body() createNoteDto: CreateNoteDto) {
